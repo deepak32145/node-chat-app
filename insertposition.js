@@ -4,16 +4,14 @@
  * @return {number}
  */
 var searchInsert = function (nums, target) {
-  let check = true;
-  for (let i = 0; i < nums.length; i++) {
-    if (target == nums[i]) {
-      check = false;
-      return i;
-    }
-  }
-  if(check){
-      for(let j =0; j<nums.length; j++){
-          if(target)
+  if (!nums.includes(target)) {
+    for (let i = nums.length; i >= 0; i--) {
+      if (nums[i - 1] < target) {
+        return i;
       }
+    }
+    return 0;
+  } else {
+    return nums.indexOf(target);
   }
 };
